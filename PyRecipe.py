@@ -1,5 +1,13 @@
-print('Sanp')       #Sanp
-print("Crackle")    #Crackle
+poem = '''There was a Young Lady of Norway,
+    Who casually sat in a doorway;
+    When the door squeezed her flat,
+    She exclaimed, "What of that?"
+    This courageous Young Lady of Norway.'''
 
-print("'Nay', said the naysayer")               #'Nay', said the naysayer
-print('The rare double quote in captivity: ".') #The rare double quote in captivity: ".
+print(poem)
+
+# There was a Young Lady of Norway,
+#     Who casually sat in a doorway;
+#     When the door squeezed her flat,
+#     She exclaimed, "What of that?"
+#     This courageous Young Lady of Norway.
