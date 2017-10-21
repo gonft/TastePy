@@ -1,13 +1,5 @@
-a = 7
-print(a) # 7
-b = a
-print(b) # 7
-print(type(a)) # <class 'int'>
-print(type(b)) # <class 'int'>
-print(type(58)) # <class 'int'>
-print(type(99.9)) # <class 'float'>
-print(type('abc')) # <class 'str'>
+print('Sanp')       #Sanp
+print("Crackle")    #Crackle
 
-googol = 10**100
-print(googol)
-print(googol * googol)
+print("'Nay', said the naysayer")               #'Nay', said the naysayer
+print('The rare double quote in captivity: ".') #The rare double quote in captivity: ".
