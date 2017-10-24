@@ -1,68 +1,87 @@
-empty_dict = {}
-print(empty_dict)   #{}
+empty_set = set()
+print(empty_set)
 
-bierce = {
-    "day": "A period of twenty-four hours, mostly misspent",
-    "positive": "Mistaken at the top of one's voice",
-    "misfortune": "The kind of fortune that never misses",
+even_numbers = {0, 2, 4, 6, 8}
+print(even_numbers)
+odd_numbers = {1, 3, 5, 7, 9}
+print(odd_numbers)
+
+drinks = {
+    'martini': {'vodka', 'vermouth'},
+    'black russian': {'vodka', 'kahlua'},
+    'white russian': {'cream', 'kahlua', 'vodka'},
+    'manhattan': {'rye', 'vermouth', 'bitters'},
+    'screwdriver': {'orange juice', 'vodka'}
 }
-print(bierce)   #{'day': 'A period of twenty-four hours, mostly misspent', 'positive': "Mistaken at the top of one's voice", 'misfortune': 'The kind of fortune that never misses'}
 
-lol = [['a', 'b'], ['c', 'd'], ['e', 'f']]
-print(dict(lol))    #{'a': 'b', 'c': 'd', 'e': 'f'}
+for name, contents in drinks.items():
+    if 'vodka' in contents:
+        print(name)
+        # martini
+        # black russian
+        # white russian
+        # screwdriver
+print()
+for name, contents in drinks.items():
+    if 'vodka' in contents and not ('vermouth' in contents or 'cream' in contents):
+        print(name)
+        # black russian
+        # screwdriver
+print()
+for name, contents in drinks.items():
+    if contents & {'vermouth', 'orange juice'}:
+        print(name)
+        # martini
+        # manhattan
+        # screwdriver
+print()
+for name, contents in drinks.items():
+    if 'vodka' in contents and not contents & {'vermouth', 'cream'}:
+        print(name)
+        # black russian
+        # screwdriver
+print()
+bruss = drinks['black russian']
+wruss = drinks['white russian']
 
-lol = [('a', 'b'), ('c', 'd'), ('e', 'f')]
-print(dict(lol))    #{'a': 'b', 'c': 'd', 'e': 'f'}
+a = {1, 2}
+b = {2, 3}
 
-lol = (['a', 'b'], ['c', 'd'], ['e', 'f'])
-print(dict(lol))    #{'a': 'b', 'c': 'd', 'e': 'f'}
+# 교집합 intersection
+print(a & b)                #{2}
+print(a.intersection(b))    #{2}
 
-lol = ['ab', 'cd', 'ef']
-print(dict(lol))    #{'a': 'b', 'c': 'd', 'e': 'f'}
+print(bruss & wruss)        #{'vodka', 'kahlua'}
 
-lol = ('ab', 'cd', 'ef')
-print(dict(lol))    #{'a': 'b', 'c': 'd', 'e': 'f'}
+# 합집합 union
+print(a | b)                #{1, 2, 3}
+print(a.union(b))           #{1, 2, 3}
 
-pythons = {
-    'Chapman': 'Graham',
-    'Cleese': 'John',
-    'Idle': 'Eric',
-    'Jones': 'Terry',
-    'Palin': 'Michael',
-}
-print(pythons)  #{'Chapman': 'Graham', 'Cleese': 'John', 'Idle': 'Eric', 'Jones': 'Terry', 'Palin': 'Michael'}
-pythons['Gilliam'] = 'Gerry'
-print(pythons)  #{'Chapman': 'Graham', 'Cleese': 'John', 'Idle': 'Eric', 'Jones': 'Terry', 'Palin': 'Michael', 'Gilliam': 'Gerry'}
-pythons['Gilliam'] = 'Terry'
-print(pythons)  #{'Chapman': 'Graham', 'Cleese': 'John', 'Idle': 'Eric', 'Jones': 'Terry', 'Palin': 'Michael', 'Gilliam': 'Terry'}
+print(bruss | wruss)        #{'kahlua', 'vodka', 'cream'}
 
-some_python = {
-    'Graham': 'Chapman',
-    'John': 'Cleese',
-    'Eric': 'Idle',
-    'Terry': 'Gilliam',
-    'Michael': 'Palin',
-    'Terry': 'Jones',
-}
-print(some_python)  #{'Graham': 'Chapman', 'John': 'Cleese', 'Eric': 'Idle', 'Terry': 'Jones', 'Michael': 'Palin'}
+# 차집합 difference
+print(a - b)                #{1}
+print(a.difference(b))      #{1}
 
-others = { 'Marx': 'Groucho', 'Howard': 'Moe'}
-pythons.update(others)
-print(pythons)
+print(bruss - wruss)        #set()
+print(wruss - bruss)        #{'cream'}
 
-first = {'a': 1, 'b': 2}
-second = {'b': 'platypus'}
-first.update(second)
-print(first)    #{'a': 1, 'b': 'platypus'}
+# 대칭 차집합 exclusive
+print(a ^ b)                        #{1, 3}
+print(a.symmetric_difference(b))    #{1, 3}
 
-print(pythons)  #{'Chapman': 'Graham', 'Cleese': 'John', 'Idle': 'Eric', 'Jones': 'Terry', 'Palin': 'Michael', 'Gilliam': 'Terry', 'Marx': 'Groucho', 'Howard': 'Moe'}
-del pythons['Marx']
-print(pythons)  #{'Chapman': 'Graham', 'Cleese': 'John', 'Idle': 'Eric', 'Jones': 'Terry', 'Palin': 'Michael', 'Gilliam': 'Terry', 'Howard': 'Moe'}
-del pythons['Howard']
-print(pythons)  #{'Chapman': 'Graham', 'Cleese': 'John', 'Idle': 'Eric', 'Jones': 'Terry', 'Palin': 'Michael', 'Gilliam': 'Terry'}
+print(bruss ^ wruss)                #{'cream'}
 
-pythons.clear()
-print(pythons)  #{}
+# 부분 집합 subset
+print(a <= b)           #False
+print(a.issubset(b))    #False
 
-pythons = {}
-print(pythons)  #{}
+print(bruss <= wruss)   #True
+
+# 진부분 집합 proper subset
+print(a < b)            #False
+print(a < a)            #False
+print(a <= a)           #True
+
+print(bruss < wruss)    #True
+
