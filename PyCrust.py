@@ -264,3 +264,18 @@ try:
 except:
     print('Need a position between 0 and', len(
         short_list)-1, ' but got', position)
+
+# Make Your Own Exceptions
+
+
+class UppercaseException(Exception):
+    pass
+
+
+words = ['eeenie', 'meenie', 'miny', 'MO']
+for word in words:
+    if word.isupper():
+        try:
+            raise UppercaseException(word)
+        except UppercaseException as exc:
+            print("UppercaseException:", exc)
