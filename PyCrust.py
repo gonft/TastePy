@@ -212,3 +212,45 @@ def add_ints(a, b):
 
 
 print(add_ints(3, 5))
+
+# Namespaces and Scope
+animal = 'fruitbat'
+
+
+def print_global():
+    print('inside print_global:', animal)
+
+
+print('at the top level:', animal)
+print_global()
+
+
+def change_local():
+    animal = 'wombat'
+    print('inside change_local:', animal, id(animal))
+
+
+change_local()
+
+
+def change_local_print_global():
+    global animal
+    animal = 'wombat'
+    print('inside change_local_print_global:', animal, id(animal))
+
+
+print(animal, id(animal))
+change_local_print_global()
+print(animal, id(animal))
+
+animal = 'fruitbat'
+
+
+def change_local():
+    animal = 'wombat'
+    print('locals:', locals())
+
+
+print(animal)
+change_local()
+print('global', globals())
