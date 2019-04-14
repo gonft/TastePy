@@ -163,3 +163,23 @@ def enliven(word):
 
 # edit_story(stairs, enliven)
 edit_story(stairs, lambda word: word.capitalize() + '!')
+
+# Generators
+
+print(sum(range(1, 101)))
+
+
+def my_range(first=10, last=10, step=1):
+    number = first
+    while number < last:
+        yield number
+        number += step
+
+
+print(my_range)
+
+ranger = my_range(1, 5)
+print(ranger)
+
+for x in ranger:
+    print(x)
